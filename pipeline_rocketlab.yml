@@ -1,0 +1,28 @@
+resources:
+  jobs:
+    Pipeline_RocketLab_ingestao_to_bronze:
+      name: Pipeline_RocketLab ingestao to bronze
+      schedule:
+        quartz_cron_expression: 0 0 13 * * ?
+        timezone_id: America/Sao_Paulo
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: Ingestao_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/jaironeto4828@gmail.com/VisagioRocket_Eng.Dados/Land_To_Bronze_Notebook
+            source: WORKSPACE
+        - task_key: Bronze_Silver
+          depends_on:
+            - task_key: Ingestao_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/jaironeto4828@gmail.com/VisagioRocket_Eng.Dados/Bronze_To_Silver
+            source: WORKSPACE
+        - task_key: Silver_Gold
+          depends_on:
+            - task_key: Bronze_Silver
+          notebook_task:
+            notebook_path: /Workspace/Users/jaironeto4828@gmail.com/VisagioRocket_Eng.Dados/Silver_To_Gold
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
