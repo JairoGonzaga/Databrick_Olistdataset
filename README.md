@@ -87,7 +87,6 @@ Realiza a ingestão inicial dos dados do dataset Olist:
 
 **Catálogo**: `visagio`  
 **Schema**: `bronze`  
-**Tempo de execução**: ~2-5 minutos
 
 ### 2️⃣ **Bronze_To_Silver.ipynb** (Transformação)
 Transforma e enriquece os dados da camada Bronze:
@@ -99,7 +98,6 @@ Transforma e enriquece os dados da camada Bronze:
 
 **Entrada**: Tabelas Bronze  
 **Saída**: Tabelas Silver  
-**Tempo de execução**: ~3-8 minutos
 
 ### 3️⃣ **Silver_To_Gold.ipynb** (Análise)
 Cria views agregadas prontas para análise e BI:
@@ -110,7 +108,6 @@ Cria views agregadas prontas para análise e BI:
 
 **Entrada**: Tabelas Silver  
 **Saída**: Tabelas Gold (Analytics)  
-**Tempo de execução**: ~2-5 minutos
 
 ---
 
